@@ -26,6 +26,8 @@ Un outil de détection et de défense contre les drones malveillants spécialeme
 
 ## Installation
 
+### Méthode standard
+
 ```bash
 # Cloner le dépôt
 git clone https://github.com/servais1983/falcon-defender-kali.git
@@ -39,6 +41,42 @@ sudo ./install.sh
 ```
 
 > ⚠️ **IMPORTANT** : Ne pas oublier la commande `chmod +x install.sh` avant d'exécuter le script. Sans cette étape, l'installation échouera avec l'erreur "command not found".
+
+### Installation sur un système à espace limité
+
+Si vous disposez de peu d'espace disque, vous pouvez optimiser l'installation :
+
+```bash
+# Libérer de l'espace avant l'installation
+sudo apt clean
+sudo apt autoremove -y
+sudo apt update
+
+# Installer uniquement les dépendances minimales
+sudo apt install -y python3 python3-pip python3-venv python3-pcapy aircrack-ng wireshark-common tshark libpcap-dev
+
+# Procéder à l'installation
+chmod +x install.sh
+sudo ./install.sh
+```
+
+### Installation avec un environnement virtuel personnalisé
+
+Pour les utilisateurs avancés qui préfèrent gérer leur propre environnement Python :
+
+```bash
+# Créer un environnement virtuel
+python3 -m venv ~/.venvs/falcon
+source ~/.venvs/falcon/bin/activate
+
+# Installer les dépendances manuellement
+sudo apt install -y aircrack-ng wireshark tshark tcpdump gnuradio hackrf libhackrf-dev libhackrf0 libpcap-dev libssl-dev
+pip install -r requirements.txt
+
+# Exécuter le script d'installation avec des options personnalisées
+chmod +x install.sh
+sudo VENV_DIR=~/.venvs/falcon ./install.sh --no-venv --no-deps
+```
 
 ### Vérification de l'installation
 
@@ -232,7 +270,7 @@ L'utilisation de Falcon-Defender doit être conforme aux lois et réglementation
 
 ## Résolution de problèmes
 
-### Problèmes d'installation
+### Problèmes d'installation courants
 
 ```bash
 # Si vous obtenez l'erreur "command not found" lors de l'exécution du script d'installation
@@ -242,6 +280,28 @@ sudo ./install.sh
 # Si vous rencontrez des erreurs de dépendances
 sudo apt-get update
 sudo apt-get install -y python3 python3-pip python3-dev
+```
+
+### Erreurs de dépendances Python spécifiques
+
+Si vous rencontrez des erreurs avec certaines dépendances Python comme pcapy :
+
+```bash
+# Installer pcapy via apt plutôt que pip
+sudo apt install python3-pcapy
+
+# Modifier le fichier requirements.txt pour ignorer cette dépendance
+sed -i 's/pcapy>=0.11.5/# pcapy>=0.11.5 # Installé via apt/g' requirements.txt
+
+# Installer une alternative
+sudo apt install -y libpcap-dev
+sudo /opt/falcon-defender/venv/bin/pip install pcapy-ng
+```
+
+De même pour gnuradio :
+```bash
+sudo apt install -y gnuradio
+sed -i 's/gnuradio-companion>=3.10.0/# gnuradio-companion>=3.10.0 # Installé via apt/g' requirements.txt
 ```
 
 ### Problèmes d'espace disque
@@ -273,6 +333,18 @@ sudo ln -s /mnt/external/falcon-defender /opt/falcon-defender
 sudo ./install.sh
 ```
 
+### Problèmes de versions Python
+
+Si vous rencontrez des problèmes avec Python 3.13 ou versions ultérieures :
+
+```bash
+# Créer un environnement virtuel avec une version spécifique de Python
+sudo apt install python3.11 python3.11-venv python3.11-dev
+python3.11 -m venv /opt/falcon-defender/venv
+sudo /opt/falcon-defender/venv/bin/pip install --upgrade pip
+sudo /opt/falcon-defender/venv/bin/pip install -r requirements.txt
+```
+
 ### L'interface réseau n'est pas en mode moniteur
 
 ```bash
@@ -285,6 +357,9 @@ sudo airmon-ng start wlan0
 ```bash
 # Assurez-vous d'exécuter avec sudo pour les fonctionnalités réseau
 sudo falcon-scan -i wlan0
+
+# Si vous obtenez des erreurs de permission sur les fichiers de log ou résultats
+sudo chown -R $USER:$USER ~/.falcon-defender
 ```
 
 ### Modèle YOLOv8 non trouvé
@@ -293,6 +368,18 @@ sudo falcon-scan -i wlan0
 # Téléchargez manuellement le modèle
 mkdir -p ~/.falcon-defender/models
 wget https://github.com/ultralytics/assets/releases/download/v8.0/yolov8n.pt -O ~/.falcon-defender/models/yolov8n.pt
+```
+
+### Problèmes avec Docker
+
+Si vous utilisez Docker sur Kali Linux et rencontrez des erreurs de dépôt :
+
+```bash
+# Supprimer le dépôt Docker problématique
+sudo rm /etc/apt/sources.list.d/docker.list
+
+# Ajouter le dépôt Docker pour Debian Bullseye (compatible avec Kali)
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
 ## Contribution
