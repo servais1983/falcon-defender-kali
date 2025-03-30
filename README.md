@@ -17,14 +17,27 @@ Un outil de détection et de défense contre les drones malveillants spécialeme
 
 ```bash
 # Cloner le dépôt
-git clone 
-https://github.com/servais1983/falcon-defender-kali.git
+git clone https://github.com/servais1983/falcon-defender-kali.git
 cd falcon-defender-kali
 
+# Rendre le script d'installation exécutable (ÉTAPE CRUCIALE)
+chmod +x install.sh
+
 # Installer les dépendances requises
-sudo ./
-install.sh
+sudo ./install.sh
 ```
+
+> ⚠️ **IMPORTANT** : Ne pas oublier la commande `chmod +x install.sh` avant d'exécuter le script. Sans cette étape, l'installation échouera avec l'erreur "command not found".
+
+### Vérification de l'installation
+
+Pour vérifier que l'installation a réussi, exécutez :
+
+```bash
+falcon-defender
+```
+
+Vous devriez voir l'écran d'accueil du toolkit avec la liste des modules disponibles.
 
 ## Guide d'utilisation
 
@@ -207,6 +220,18 @@ L'utilisation de Falcon-Defender doit être conforme aux lois et réglementation
 - Les paramètres d'alerte peuvent être configurés dans un fichier JSON séparé
 
 ## Résolution de problèmes
+
+### Problèmes d'installation
+
+```bash
+# Si vous obtenez l'erreur "command not found" lors de l'exécution du script d'installation
+chmod +x install.sh
+sudo ./install.sh
+
+# Si vous rencontrez des erreurs de dépendances
+sudo apt-get update
+sudo apt-get install -y python3 python3-pip python3-dev
+```
 
 ### L'interface réseau n'est pas en mode moniteur
 
