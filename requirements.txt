@@ -1,0 +1,32 @@
+# Falcon-Defender - Dépendances Python
+
+# Réseau et capture de paquets
+scapy>=2.5.0
+pyshark>=0.6
+pcapy>=0.11.5
+
+# MAVLink
+pymavlink>=2.4.37
+
+# Détection visuelle
+ultralytics>=8.0.0
+opencv-python>=4.7.0
+
+# Chiffrement et sécurité
+cryptography>=41.0.0
+
+# Communications et alertes
+requests>=2.31.0
+pyyaml>=6.0
+
+# Interface utilisateur
+rich>=13.3.0
+prompt-toolkit>=3.0.0
+
+# Analyse et traitement des données
+numpy>=1.24.0
+pandas>=2.0.0
+
+# RF et SDR
+pyrtlsdr>=0.2.91
+gnuradio-companion>=3.10.0; sys_platform == 'linux'
