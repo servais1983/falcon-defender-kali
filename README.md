@@ -13,6 +13,17 @@ Un outil de détection et de défense contre les drones malveillants spécialeme
 - Intégration avec des outils Kali Linux existants
 - Visualisation en temps réel des drones détectés
 
+## Prérequis système
+
+- Kali Linux (ou distribution basée sur Debian)
+- Python 3.10 ou plus récent
+- Minimum 2 GB de RAM
+- **Espace disque disponible : au moins 5 GB**
+  - L'installation des packages, des modèles d'IA et des dépendances requiert un espace disque significatif
+  - Prévoir de l'espace supplémentaire pour les logs, captures et enregistrements vidéo
+- Carte réseau compatible avec le mode moniteur (pour les fonctionnalités RF)
+- Webcam ou caméra USB (pour les fonctionnalités de détection visuelle)
+
 ## Installation
 
 ```bash
@@ -231,6 +242,35 @@ sudo ./install.sh
 # Si vous rencontrez des erreurs de dépendances
 sudo apt-get update
 sudo apt-get install -y python3 python3-pip python3-dev
+```
+
+### Problèmes d'espace disque
+
+Si vous rencontrez l'erreur "No space left on device" pendant l'installation :
+
+```bash
+# Libérer de l'espace
+sudo apt clean
+sudo apt autoremove -y
+sudo journalctl --vacuum-time=1d
+
+# Vérifier l'espace disponible
+df -h
+```
+
+Vous pouvez également installer Falcon-Defender sur un disque externe :
+
+```bash
+# Monter un disque externe
+sudo mkdir -p /mnt/external
+sudo mount /dev/sdX1 /mnt/external  # Remplacez X1 par votre partition
+
+# Créer un lien symbolique pour l'installation
+sudo mkdir -p /mnt/external/falcon-defender
+sudo ln -s /mnt/external/falcon-defender /opt/falcon-defender
+
+# Continuer l'installation
+sudo ./install.sh
 ```
 
 ### L'interface réseau n'est pas en mode moniteur
