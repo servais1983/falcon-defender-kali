@@ -1,3 +1,5 @@
+![Logo_falcon_defense](images/falcon_defense.jpg)
+
 # Falcon-Defender Toolkit 🛡️
 
 Un outil de détection et de défense contre les drones malveillants spécialement conçu pour Kali Linux.
@@ -15,11 +17,13 @@ Un outil de détection et de défense contre les drones malveillants spécialeme
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/servais1983/falcon-defender-kali.git
+git clone 
+https://github.com/servais1983/falcon-defender-kali.git
 cd falcon-defender-kali
 
 # Installer les dépendances requises
-sudo ./install.sh
+sudo ./
+install.sh
 ```
 
 ## Guide d'utilisation
