@@ -382,9 +382,7 @@ sudo rm /etc/apt/sources.list.d/docker.list
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-## Contribution
 
-Les contributions sont les bienvenues! Veuillez consulter le fichier CONTRIBUTING.md pour plus d'informations.
 
 ## Licence
 
