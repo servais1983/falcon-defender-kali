@@ -67,17 +67,30 @@ def load_model():
 def process_frame(frame, confidence=0.4):
     global detected_drones, model
     
-    if frame is None:
+    if frame is None or model is None:
         return frame
     
     # Infos sur le frame pour l'affichage
     height, width = frame.shape[:2]
     
     # Exécute la détection et le tracking
-    results = model.track(frame, persist=True, conf=confidence, verbose=False)
+    try:
+        results = model.track(frame, persist=True, conf=confidence, verbose=False)
+    except Exception as e:
+        logging.error(f"Erreur lors du tracking: {str(e)}")
+        return frame
     
     # Traite les résultats
-    if results and len(results) > 0:
+    if results is not None:
+        for result in results:
+            if result is not None and hasattr(result, 'track'):
+                track = result.track
+                if track is not None:
+                    # Traitement du tracking
+                    process_tracking(track)
+    
+    # Traite les résultats
+    if results is not None and len(results) > 0:
         # Récupère les boîtes de détection
         boxes = results[0].boxes
         
@@ -380,6 +393,13 @@ def main():
     
     # Lance la capture vidéo
     capture_video(args.source, args.conf, args.display, args.record, args.snapshot)
+
+def process_tracking(track):
+    """Traite les informations de tracking d'un objet détecté."""
+    if track is None:
+        return
+    # Ici vous pouvez ajouter du code spécifique pour le traitement du tracking
+    pass
 
 if __name__ == "__main__":
     main()

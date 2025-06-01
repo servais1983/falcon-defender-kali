@@ -3,24 +3,24 @@
 # Réseau et capture de paquets
 scapy>=2.5.0
 pyshark>=0.6
-pcapy>=0.11.5
+# pcapy>=0.11.4  # Retiré pour compatibilité Windows
 
 # MAVLink
 pymavlink>=2.4.37
 
 # Détection visuelle
 ultralytics>=8.0.0
-opencv-python>=4.7.0
+opencv-python>=4.8.0
 
 # Chiffrement et sécurité
-cryptography>=41.0.0
+cryptography>=42.0.2
 
 # Communications et alertes
 requests>=2.31.0
-pyyaml>=6.0
+pyyaml>=6.0.1
 
 # Interface utilisateur
-rich>=13.3.0
+rich>=13.7.0
 prompt-toolkit>=3.0.0
 
 # Analyse et traitement des données
@@ -30,3 +30,16 @@ pandas>=2.0.0
 # RF et SDR
 pyrtlsdr>=0.2.91
 gnuradio-companion>=3.10.0; sys_platform == 'linux'
+
+# Dronekit
+dronekit>=2.9.2
+
+# Dépendances de sécurité
+pyjwt>=2.8.0
+pyotp>=2.8.0
+bcrypt>=4.0.1
+python-dotenv>=1.0.0
+python-jose>=3.3.0
+passlib>=1.7.4
+python-multipart>=0.0.6
+email-validator>=2.0.0

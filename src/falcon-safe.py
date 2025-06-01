@@ -15,6 +15,7 @@ import signal
 import sys
 import time
 from datetime import datetime
+import platform
 
 try:
     from pymavlink import mavutil
@@ -281,7 +282,7 @@ def save_audit_log(action, connection_string, result, key_file=None):
         
         timestamp = datetime.now().isoformat()
         username = os.getlogin()
-        hostname = os.uname().nodename
+        hostname = platform.uname().node
         ip = connection_string.split(':')[1] if ':' in connection_string else connection_string
         
         entry = {
@@ -334,6 +335,12 @@ def main():
         print("[!] AUTORISATION REFUSÉE")
         print("    Pour des raisons de sécurité et légales, ce module nécessite une autorisation valide.")
         print("    Contactez votre administrateur système ou les autorités compétentes pour obtenir une clé.")
+        return False
+    
+    # Vérifie si le système est compatible
+    system_info = platform.uname()
+    if system_info.system not in ['Linux', 'Darwin']:
+        logging.error(f"Système non supporté: {system_info.system}")
         return False
     
     # Exécute l'action demandée

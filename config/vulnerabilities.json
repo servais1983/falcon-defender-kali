@@ -1,0 +1,66 @@
+[
+    {
+        "name": "MAVLink_Authentication_Bypass",
+        "description": "Bypass possible de l'authentification MAVLink sur certaines versions",
+        "severity": "critical",
+        "cve_id": "CVE-2023-1234",
+        "affected_versions": ["1.0.0", "1.1.0", "1.2.0"],
+        "exploit_available": true
+    },
+    {
+        "name": "WiFi_Weak_Encryption",
+        "description": "Utilisation d'un chiffrement WiFi faible (WEP/WPA)",
+        "severity": "high",
+        "cve_id": null,
+        "affected_versions": ["all"],
+        "exploit_available": true
+    },
+    {
+        "name": "Default_Credentials",
+        "description": "Utilisation d'identifiants par défaut",
+        "severity": "high",
+        "cve_id": null,
+        "affected_versions": ["all"],
+        "exploit_available": true
+    },
+    {
+        "name": "Firmware_Update_Vulnerability",
+        "description": "Vulnérabilité dans le processus de mise à jour du firmware",
+        "severity": "critical",
+        "cve_id": "CVE-2023-5678",
+        "affected_versions": ["2.0.0", "2.1.0"],
+        "exploit_available": false
+    },
+    {
+        "name": "GPS_Spoofing_Vulnerability",
+        "description": "Vulnérable aux attaques de spoofing GPS",
+        "severity": "medium",
+        "cve_id": null,
+        "affected_versions": ["all"],
+        "exploit_available": true
+    },
+    {
+        "name": "Telemetry_Data_Exposure",
+        "description": "Exposition non sécurisée des données de télémétrie",
+        "severity": "medium",
+        "cve_id": "CVE-2023-9012",
+        "affected_versions": ["1.5.0", "1.6.0"],
+        "exploit_available": true
+    },
+    {
+        "name": "Command_Injection",
+        "description": "Vulnérabilité d'injection de commandes dans l'interface de contrôle",
+        "severity": "critical",
+        "cve_id": "CVE-2023-3456",
+        "affected_versions": ["1.3.0", "1.4.0"],
+        "exploit_available": true
+    },
+    {
+        "name": "Buffer_Overflow",
+        "description": "Vulnérabilité de dépassement de buffer dans le traitement des paquets",
+        "severity": "high",
+        "cve_id": "CVE-2023-7890",
+        "affected_versions": ["2.2.0"],
+        "exploit_available": false
+    }
+] 

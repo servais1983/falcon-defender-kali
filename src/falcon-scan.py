@@ -14,8 +14,11 @@ from datetime import datetime
 import json
 
 try:
-    from scapy.all import *
-    from scapy.layers.dot11 import Dot11, Dot11Beacon, Dot11Elt
+    from scapy.layers.dot11 import Dot11, Dot11Beacon, Dot11Elt, Dot11ProbeResp
+    from scapy.layers.radiotap import RadioTap
+    from scapy.sendrecv import sniff
+    from scapy.packet import Packet
+    from scapy.fields import *
 except ImportError:
     print("[!] Erreur: Le module scapy est requis.")
     print("    Installez-le avec: pip install scapy")
