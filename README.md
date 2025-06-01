@@ -1,83 +1,142 @@
-![falcon_defense](falcon_defense.jpg)
+![Falcon Defender](falcon_defense.jpg)
+
+<div align="center">
 
 # Falcon-Defender Toolkit 🛡️
 
-Un outil de détection et de défense contre les drones malveillants spécialement conçu pour Kali Linux.
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-GPL--3.0-green)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Kali%20Linux-red)](https://www.kali.org/)
+[![Security](https://img.shields.io/badge/security-AES256%2C%202FA-yellow)](https://github.com/servais1983/falcon-defender-kali)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/servais1983/falcon-defender-kali)
+
+[![Falcon Defender Demo](https://img.youtube.com/vi/your_video_id/0.jpg)](https://www.youtube.com/watch?v=your_video_id)
+
+*Un outil de détection et de défense contre les drones malveillants spécialement conçu pour Kali Linux.*
+
+</div>
 
 ---
 
 ## 📑 Table des matières
-- [Fonctionnalités](#fonctionnalités)
-- [Prérequis système](#prérequis-système)
-- [Installation](#installation)
-- [Structure du projet](#structure-du-projet)
-- [Utilisation](#utilisation)
-- [Simulation](#simulation)
-- [Tests](#tests)
-- [Sécurité](#sécurité)
-- [Considérations légales](#considérations-légales)
-- [Licence](#licence)
+- [Fonctionnalités](#-fonctionnalités)
+- [Prérequis système](#-prérequis-système)
+- [Installation](#-installation)
+- [Structure du projet](#-structure-du-projet)
+- [Utilisation](#-utilisation)
+- [Simulation](#-simulation)
+- [Tests](#-tests)
+- [Sécurité](#-sécurité)
+- [Considérations légales](#-considérations-légales)
+- [Licence](#-licence)
 
 ---
 
 ## 🚀 Fonctionnalités
 
-* 📡 Détection de drones via RF/WiFi/MAVLink
-* 🛩️ Analyse des signatures de drones commerciaux
-* 🤖 Détection visuelle par IA (YOLOv8)
-* 🚨 Réponse défensive passive (alertes, logs)
-* 🛠️ Intégration avec des outils Kali Linux existants
-* 📊 Visualisation en temps réel des drones détectés
-* 🔒 Système de sécurité avancé avec :
-  * 🔑 Chiffrement des données sensibles
-  * 🔐 Authentification à deux facteurs (2FA)
-  * 🗝️ Gestion sécurisée des sessions
-  * 🛡️ Protection contre les attaques par force brute
-  * ♻️ Rotation automatique des clés
-  * 🧹 Nettoyage sécurisé de la mémoire
-  * 🧑‍💻 **Nouveau :** Module d'exploitation pour l'analyse et la détection des vulnérabilités drones
+<div align="center">
+
+![Features](https://img.shields.io/badge/Features-Detection%20%7C%20Defense%20%7C%20Security-blue)
+
+</div>
+
+* 📡 **Détection RF/WiFi/MAVLink**
+  * Analyse des signaux radio
+  * Détection des protocoles MAVLink
+  * Identification des drones commerciaux
+
+* 🛩️ **Analyse des signatures**
+  * Base de données de signatures drones
+  * Reconnaissance automatique
+  * Classification des menaces
+
+* 🤖 **Détection visuelle IA**
+  * Modèle YOLOv8 optimisé
+  * Détection en temps réel
+  * Tracking multi-drones
+
+* 🚨 **Système d'alerte**
+  * Alertes en temps réel
+  * Journalisation sécurisée
+  * Notifications configurables
+
+* 🔒 **Sécurité avancée**
+  * Chiffrement AES-256
+  * Authentification 2FA
+  * Protection contre les attaques
+  * Rotation des clés
+  * Nettoyage mémoire
 
 ---
 
 ## 🖥️ Prérequis système
 
-* 🐧 Kali Linux (ou distribution basée sur Debian)
-* 🐍 Python 3.10 ou plus récent
-* 💾 Minimum 2 GB de RAM
-* 💽 **Espace disque disponible : au moins 5 GB**  
-   * L'installation des packages, des modèles d'IA et des dépendances requiert un espace disque significatif  
-   * Prévoir de l'espace supplémentaire pour les logs, captures et enregistrements vidéo
-* 📡 Carte réseau compatible avec le mode moniteur (pour les fonctionnalités RF)
-* 🎥 Webcam ou caméra USB (pour les fonctionnalités de détection visuelle)
+<div align="center">
+
+![Requirements](https://img.shields.io/badge/Requirements-System%20%7C%20Hardware%20%7C%20Software-orange)
+
+</div>
+
+* 🐧 **Système d'exploitation**
+  * Kali Linux (recommandé)
+  * Distribution Debian
+  * Windows 10/11
+
+* 💻 **Matériel**
+  * CPU: 2+ cœurs
+  * RAM: 2GB minimum
+  * Stockage: 5GB minimum
+  * Carte réseau: Mode moniteur
+  * Webcam/Caméra USB
+
+* 🛠️ **Logiciels**
+  * Python 3.10+
+  * pip (gestionnaire de paquets)
+  * Git
 
 ---
 
 ## ⚙️ Installation
 
-### Méthode standard (Linux)
+<div align="center">
+
+![Installation](https://img.shields.io/badge/Installation-Linux%20%7C%20Windows-green)
+
+</div>
+
+### Linux (Kali/Debian)
 
 ```bash
 # Cloner le dépôt
 git clone https://github.com/servais1983/falcon-defender-kali.git
 cd falcon-defender-kali
 
-# Rendre le script d'installation exécutable (ÉTAPE CRUCIALE)
+# Installation
 chmod +x install.sh
-
-# Installer les dépendances requises
 sudo ./install.sh
 ```
 
-### Installation sur Windows
+### Windows
 
-```bash
-# Exécuter le script d'installation Windows
-install.bat
+```powershell
+# Installation automatique
+.\install.bat
+
+# Ou installation manuelle
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ---
 
 ## 🗂️ Structure du projet
+
+<div align="center">
+
+![Project Structure](https://img.shields.io/badge/Structure-Modules%20%7C%20Config%20%7C%20Tests-blue)
+
+</div>
 
 ```
 falcon-defender-kali/
@@ -87,134 +146,144 @@ falcon-defender-kali/
 │   ├── falcon-vision.py    # Module de détection visuelle
 │   ├── falcon-safe.py      # Module de contre-mesures
 │   ├── security.py         # Module de sécurité
-│   └── exploitation.py     # Module d'exploitation (audit vulnérabilités)
-├── simulation/             # 📦 Simulateur de drones et de trafic (voir section Simulation)
-├── tests/                  # 🧪 Tests unitaires
-├── config/                 # ⚙️ Fichiers de configuration (signatures, vulnérabilités, etc.)
-├── models/                 # 🤖 Modèles d'IA (YOLO, etc.)
-└── logs/                   # 📝 Journaux système
+│   └── exploitation.py     # Module d'exploitation
+├── simulation/             # Simulateur de drones
+├── tests/                  # Tests unitaires
+├── config/                 # Configuration
+├── models/                 # Modèles IA
+└── logs/                   # Journaux
 ```
 
 ---
 
 ## 🕹️ Utilisation
 
+<div align="center">
+
+![Usage](https://img.shields.io/badge/Usage-Commands%20%7C%20Examples%20%7C%20Options-green)
+
+</div>
+
 ### Interface principale
 
 ```bash
 falcon-defender
 ```
-Lance l'interface CLI interactive pour piloter tous les modules.
 
-### Modules individuels
+### Modules
 
 1. **Scan RF/WiFi** (`falcon-scan`)
-   - Détecte les drones via les signaux RF/WiFi.
-   - **Exemple :**
-     ```bash
-     falcon-scan -i wlan0
-     ```
-   - **Options principales :**
-     - `-i, --interface` : Interface réseau à utiliser (ex: wlan0)
-     - `-c, --channel` : Canal WiFi spécifique à scanner
-     - `-t, --time` : Durée du scan en secondes
-     - `-v, --verbose` : Mode verbeux
+   ```bash
+   falcon-scan -i wlan0 -c 6 -t 300 -v
+   ```
 
 2. **Détection visuelle** (`falcon-vision`)
-   - Détecte les drones par caméra et IA.
-   - **Exemple :**
-     ```bash
-     falcon-vision --source 0 --display
-     ```
-   - **Options principales :**
-     - `--source` : Source vidéo (0 = webcam, chemin fichier, URL RTSP)
-     - `--display` : Affiche la vidéo en direct
-     - `--record` : Enregistre la vidéo
-     - `--conf` : Seuil de confiance IA
+   ```bash
+   falcon-vision --source 0 --display --record
+   ```
 
 3. **Analyse MAVLink** (`falcon-mavlink`)
-   - Analyse le trafic MAVLink (protocole drone)
-   - **Exemple :**
-     ```bash
-     falcon-mavlink --port 14550
-     ```
-   - **Options principales :**
-     - `--port` : Port UDP à écouter (défaut : 14550)
-     - `--host` : Adresse IP à écouter
-     - `--connect` : Connexion directe à un flux MAVLink
-     - `--capture` : Capture les paquets dans un fichier
+   ```bash
+   falcon-mavlink --port 14550 --capture
+   ```
 
-4. **Contre-mesures sécurisées** (`falcon-safe`)
-   - Envoie des commandes sécurisées au drone (RTL, atterrissage, désarmement)
-   - **Exemple :**
-     ```bash
-     falcon-safe --connect udp:192.168.1.10:14550 --action rtl --key auth.key
-     ```
-   - **Options principales :**
-     - `--connect` : Connexion au drone (ex: udp:192.168.1.1:14550)
-     - `--action` : Action (`rtl`, `land`, `disarm`)
-     - `--key` : Fichier de clé d'autorisation
-     - `--sysid`, `--compid` : IDs cibles
+4. **Contre-mesures** (`falcon-safe`)
+   ```bash
+   falcon-safe --connect udp:192.168.1.10:14550 --action rtl
+   ```
 
-5. **Exploitation des vulnérabilités** (`exploitation.py`)
-   - Analyse une cible et génère un rapport sur les vulnérabilités connues.
-   - **Exemple :**
-     ```bash
-     python src/exploitation.py
-     ```
-   - Personnalisez la cible dans le script ou utilisez-le comme module Python.
-   - Les vulnérabilités sont définies dans `config/vulnerabilities.json`.
+5. **Exploitation** (`exploitation.py`)
+   ```bash
+   python src/exploitation.py
+   ```
 
 ---
 
 ## 🛰️ Simulation
 
-Le dossier `simulation/` permet de simuler des drones, du trafic RF/MAVLink et des attaques pour tester Falcon-Defender sans matériel réel.
+<div align="center">
 
-- **Lancer le simulateur :**
-  ```bash
-  cd simulation
-  python simulator.py
-  ```
-- **Fonctionnalités :**
-  - Génération de faux signaux RF/WiFi
-  - Simulation de trafic MAVLink
-  - Scénarios d'attaque (DoS, spoofing, etc.)
-- **Utilité :**
-  - Tester les modules de détection et d'exploitation en environnement contrôlé
-  - Démonstrations pédagogiques
+![Simulation](https://img.shields.io/badge/Simulation-Testing%20%7C%20Training%20%7C%20Demo-orange)
+
+</div>
+
+```bash
+cd simulation
+python simulator.py
+```
+
+* Scénarios prédéfinis
+* Attaques simulées
+* Environnement de test
 
 ---
 
 ## 🧪 Tests
 
-Pour exécuter tous les tests unitaires (y compris le module exploitation) :
+<div align="center">
+
+![Tests](https://img.shields.io/badge/Tests-Unit%20%7C%20Integration%20%7C%20Security-green)
+
+</div>
 
 ```bash
+# Tests unitaires
 python -m pytest tests/
+
+# Tests de sécurité
+python -m pytest tests/test_security.py
+
+# Tests d'exploitation
+python -m pytest tests/test_exploitation.py
 ```
 
 ---
 
 ## 🔒 Sécurité
 
-Le projet implémente plusieurs mesures de sécurité :
+<div align="center">
 
-* 🔑 Chiffrement AES-256 pour les données sensibles
-* 🔐 Authentification à deux facteurs
-* 🛡️ Protection contre les attaques par force brute
-* ♻️ Rotation automatique des clés
-* 🧹 Nettoyage sécurisé de la mémoire
-* 📝 Journalisation sécurisée des événements
+![Security](https://img.shields.io/badge/Security-Encryption%20%7C%20Auth%20%7C%20Protection-red)
+
+</div>
+
+* 🔑 Chiffrement AES-256
+* 🔐 Authentification 2FA
+* 🛡️ Protection contre les attaques
+* ♻️ Rotation des clés
+* 🧹 Nettoyage mémoire
+* 📝 Journalisation sécurisée
 
 ---
 
 ## ⚖️ Considérations légales
 
-L'utilisation de Falcon-Defender doit être conforme aux lois et réglementations locales. Certaines fonctionnalités peuvent être soumises à autorisation selon votre juridiction.
+<div align="center">
+
+![Legal](https://img.shields.io/badge/Legal-Compliance%20%7C%20Regulations%20%7C%20Ethics-blue)
+
+</div>
+
+* Utilisation responsable
+* Conformité légale
+* Autorisations requises
 
 ---
 
 ## 📄 Licence
 
-GPL-3.0 - Voir le fichier LICENSE pour plus de détails.
+<div align="center">
+
+![License](https://img.shields.io/badge/License-GPL--3.0-green)
+
+</div>
+
+GPL-3.0 - Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+<div align="center">
+
+![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red)
+
+</div>
